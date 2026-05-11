@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrow or Return Books | Smart Library Management System</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #f5f8ff;
+            color: #111;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #1e90ff;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 22px;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #1e90ff;
+        }
+
+        .page-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 50, 120, 0.82)),
+                        url("https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1500&q=80");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 90px 60px;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .page-hero h1 span {
+            color: #1e90ff;
+        }
+
+        .page-hero p {
+            font-size: 18px;
+            color: #e6e6e6;
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .container {
+            padding: 50px 60px 80px;
+        }
+
+        .panel {
+            background-color: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            margin-bottom: 35px;
+            border-top: 5px solid #1e90ff;
+        }
+
+        .panel h2 {
+            font-size: 30px;
+            color: #000;
+            margin-bottom: 8px;
+        }
+
+        .panel p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #000;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #cddbf5;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            background-color: #f5f8ff;
+            transition: 0.3s;
+        }
+
+        .form-group textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #1e90ff;
+            box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.15);
+            background-color: #fff;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .btn-primary,
+        .btn-dark,
+        .btn-outline {
+            border: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: #1e90ff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #006edc;
+        }
+
+        .btn-dark {
+            background-color: #000;
+            color: white;
+        }
+
+        .btn-dark:hover {
+            background-color: #1e90ff;
+        }
+
+        .btn-outline {
+            background-color: white;
+            color: #000;
+            border: 2px solid #000;
+        }
+
+        .btn-outline:hover {
+            background-color: #000;
+            color: white;
+        }
+
+        .info-boxes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .info-box {
+            background-color: #000;
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #1e90ff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+        }
+
+        .info-box h3 {
+            color: #1e90ff;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #ddd;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background-color: #000;
+            color: white;
+        }
+
+        th {
+            padding: 18px;
+            text-align: left;
+            font-size: 15px;
+        }
+
+        td {
+            padding: 18px;
+            border-bottom: 1px solid #e8e8e8;
+            color: #333;
+            font-size: 15px;
+        }
+
+        .empty-records {
+            text-align: center;
+            padding: 45px 20px;
+        }
+
+        .empty-records h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .empty-records p {
+            color: #555;
+            margin-bottom: 0;
+        }
+
+        footer {
+            background-color: #020202;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 15px;
+        }
+
+        @media screen and (max-width: 900px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+
+            nav a {
+                margin: 8px;
+                display: inline-block;
+            }
+
+            .page-hero {
+                padding: 70px 25px;
+            }
+
+            .page-hero h1 {
+                font-size: 38px;
+            }
+
+            .container {
+                padding: 35px 25px 60px;
+            }
+
+            .form-row,
+            .info-boxes {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .info-boxes {
+                gap: 25px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Login Protection Script -->
+    <script>
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            alert("You must be logged in to access the Borrow/Return page.");
+            window.location.href = "login.html";
+        }
+    </script>
+
+    <header>
+        <div class="logo">Smart<span>Library</span></div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="catalog.html">Book Catalog</a>
+            <a href="registration.html">Registration</a>
+            <a href="borrow-return.html" class="active">Borrow/Return</a>
+            <a href="login.html">Login</a>
+            <a href="#" onclick="logoutUser()">Logout</a>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <h1>Borrow or <span>Return Books</span></h1>
+        <p>
+            Use this page to record book borrowing and book returns. Only logged-in users
+            can access this section of the Smart Library Management System.
+        </p>
+    </section>
+
+    <main class="container">
+
+        <section class="info-boxes">
+            <div class="info-box">
+                <h3>Borrow Book</h3>
+                <p>Enter the member and book details to process a new borrowing transaction.</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Return Book</h3>
+                <p>Record returned books and update the return date and transaction status.</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Track Records</h3>
+                <p>Borrowing records help the library monitor due dates and returned books.</p>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>Borrow/Return Form</h2>
+            <p>
+                Complete the form below to borrow or return a book. Fields such as Member ID,
+                Book ID, Borrow Date, Due Date, Return Date, and Transaction Type should be recorded.
+            </p>
+
+            <form onsubmit="processBorrowReturn(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="transactionType">Transaction Type</label>
+                        <select id="transactionType" name="transactionType" required>
+                            <option value="">Select transaction type</option>
+                            <option value="Borrow">Borrow Book</option>
+                            <option value="Return">Return Book</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recordID">Record ID</label>
+                        <input type="text" id="recordID" name="recordID" placeholder="Example: BR001" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="memberID">Member ID</label>
+                        <input type="text" id="memberID" name="memberID" placeholder="Example: LIB001" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="memberName">Member Name</label>
+                        <input type="text" id="memberName" name="memberName" placeholder="Enter member full name" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bookID">Book ID</label>
+                        <input type="text" id="bookID" name="bookID" placeholder="Example: BK001" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bookTitle">Book Title</label>
+                        <input type="text" id="bookTitle" name="bookTitle" placeholder="Enter book title" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="borrowDate">Borrow Date</label>
+                        <input type="date" id="borrowDate" name="borrowDate">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dueDate">Due Date</label>
+                        <input type="date" id="dueDate" name="dueDate">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="returnDate">Return Date</label>
+                        <input type="date" id="returnDate" name="returnDate">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Book Status</label>
+                        <select id="status" name="status" required>
+                            <option value="">Select status</option>
+                            <option value="Borrowed">Borrowed</option>
+                            <option value="Returned">Returned</option>
+                            <option value="Overdue">Overdue</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" name="notes" placeholder="Enter any additional notes about this transaction"></textarea>
+                </div>
+
+                <div class="btn-row">
+                    <button type="submit" class="btn-primary">Save Transaction</button>
+                    <button type="reset" class="btn-outline">Clear Form</button>
+                    <a href="catalog.html" class="btn-dark">View Catalog</a>
+                </div>
+            </form>
+        </section>
+
+        <section class="panel">
+            <h2>Borrowing Records</h2>
+            <p>
+                Saved borrowing and return records will appear in this section.
+                This front-end page currently displays an empty table until database functionality is connected.
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Record ID</th>
+                        <th>Member ID</th>
+                        <th>Member Name</th>
+                        <th>Book ID</th>
+                        <th>Book Title</th>
+                        <th>Transaction</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td colspan="7">
+                            <div class="empty-records">
+                                <h3>No Borrowing Records Yet</h3>
+                                <p>No books have been borrowed or returned yet.</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Smart Library Management System. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function processBorrowReturn(event) {
+            event.preventDefault();
+
+            const transactionType = document.getElementById("transactionType").value;
+            const recordID = document.getElementById("recordID").value;
+            const memberID = document.getElementById("memberID").value;
+            const memberName = document.getElementById("memberName").value;
+            const bookID = document.getElementById("bookID").value;
+            const bookTitle = document.getElementById("bookTitle").value;
+            const status = document.getElementById("status").value;
+
+            if (
+                transactionType === "" ||
+                recordID === "" ||
+                memberID === "" ||
+                memberName === "" ||
+                bookID === "" ||
+                bookTitle === "" ||
+                status === ""
+            ) {
+                alert("Please complete all required fields.");
+                return;
+            }
+
+            alert(transactionType + " transaction saved successfully for " + memberName + ".");
+        }
+
+        function logoutUser() {
+            localStorage.removeItem("isLoggedIn");
+            localStorage.removeItem("userEmail");
+
+            alert("You have been logged out.");
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+</html>

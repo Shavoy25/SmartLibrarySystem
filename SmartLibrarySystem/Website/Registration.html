@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration | Smart Library Management System</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #f5f8ff;
+            color: #111;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #1e90ff;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #1e90ff;
+        }
+
+        .auth-section {
+            min-height: 85vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 50, 120, 0.82)),
+                        url("https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1500&q=80");
+            background-size: cover;
+            background-position: center;
+            padding: 70px 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 700px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+            border-top: 6px solid #1e90ff;
+        }
+
+        .auth-container h1 {
+            text-align: center;
+            color: #000;
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .auth-container h1 span {
+            color: #1e90ff;
+        }
+
+        .auth-container p {
+            text-align: center;
+            color: #555;
+            font-size: 15px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #000;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #cddbf5;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            background-color: #f5f8ff;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #1e90ff;
+            box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.15);
+            background-color: #fff;
+        }
+
+        .terms {
+            margin-bottom: 25px;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .terms input {
+            margin-right: 8px;
+        }
+
+        .terms a {
+            color: #1e90ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-primary {
+            width: 100%;
+            border: none;
+            background-color: #1e90ff;
+            color: white;
+            padding: 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #006edc;
+        }
+
+        .auth-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 15px;
+            color: #555;
+        }
+
+        .auth-link a {
+            color: #1e90ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .auth-link a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #020202;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 15px;
+        }
+
+        @media screen and (max-width: 900px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+
+            nav a {
+                margin: 8px;
+                display: inline-block;
+            }
+
+            .auth-section {
+                padding: 50px 25px;
+            }
+
+            .auth-container {
+                padding: 30px 25px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Smart<span>Library</span></div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="catalog.html">Book Catalog</a>
+            <a href="registration.html" class="active">Registration</a>
+            <a href="borrow-return.html">Borrow/Return</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <section class="auth-section">
+        <div class="auth-container">
+            <h1>User <span>Registration</span></h1>
+            <p>
+                Register a new library user so they can search for books,
+                borrow materials, and access library services.
+            </p>
+
+            <form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstname">First Name</label>
+                        <input type="text" id="firstname" name="firstname" placeholder="Enter first name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" id="lastname" name="lastname" placeholder="Enter last name" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="memberid">Member ID</label>
+                        <input type="text" id="memberid" name="memberid" placeholder="Example: LIB001" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="role">User Type</label>
+                        <select id="role" name="role" required>
+                            <option value="">Select user type</option>
+                            <option value="student">Student</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="staff">Staff</option>
+                            <option value="librarian">Librarian</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter email address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter phone number">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">Create Password</label>
+                        <input type="password" id="password" name="password" placeholder="Create password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm password" required>
+                    </div>
+                </div>
+
+                <div class="terms">
+                    <label>
+                        <input type="checkbox" required>
+                        I confirm that the information entered is correct and agree to follow the library's borrowing rules.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-primary">Register User</button>
+            </form>
+
+            <div class="auth-link">
+                <p>Already registered? <a href="login.html">Login here</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Smart Library Management System. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
