@@ -1,0 +1,3 @@
+@model List<Book>
+@{ ViewData["Title"]="Book Catalog"; }
+<section class="page-hero"><h1>Book <span>Catalog</span></h1><p>Books added through the ASP.NET Core website or Windows Forms app appear here from the shared database.</p></section><section class="container"><div class="panel"><h2>Library Book Collection</h2><table><thead><tr><th>Book Code</th><th>Title</th><th>Author</th><th>Category</th><th>ISBN</th><th>Status</th></tr></thead><tbody>@if(Model.Count==0){<tr><td colspan="6" class="empty-cell">No books have been added yet.</td></tr>}else{foreach(var book in Model){<tr><td>@book.BookCode</td><td>@book.Title</td><td>@book.Author</td><td>@book.Category</td><td>@book.ISBN</td><td>@book.Status</td></tr>}}</tbody></table></div></section>
