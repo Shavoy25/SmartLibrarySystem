@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ashan\\OneDrive\\Desktop\\Enterprise Application Development\\SmartLibrarySystem\\SmartLibraryApi\\SmartLibraryApi.csproj": {}
+    "c:\\Users\\ashan\\OneDrive\\Desktop\\Enterprise Application Development\\SmartLibrarySystem\\SmartLibrarySystem\\SmartLibraryApi\\SmartLibraryApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ashan\\OneDrive\\Desktop\\Enterprise Application Development\\SmartLibrarySystem\\SmartLibraryApi\\SmartLibraryApi.csproj": {
+    "c:\\Users\\ashan\\OneDrive\\Desktop\\Enterprise Application Development\\SmartLibrarySystem\\SmartLibrarySystem\\SmartLibraryApi\\SmartLibraryApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ashan\\OneDrive\\Desktop\\Enterprise Application Development\\SmartLibrarySystem\\SmartLibraryApi\\SmartLibraryApi.csproj",
+        "projectUniqueName": "c:\\Users\\ashan\\OneDrive\\Desktop\\Enterprise Application Development\\SmartLibrarySystem\\SmartLibrarySystem\\SmartLibraryApi\\SmartLibraryApi.csproj",
         "projectName": "SmartLibraryApi",
-        "projectPath": "C:\\Users\\ashan\\OneDrive\\Desktop\\Enterprise Application Development\\SmartLibrarySystem\\SmartLibraryApi\\SmartLibraryApi.csproj",
+        "projectPath": "c:\\Users\\ashan\\OneDrive\\Desktop\\Enterprise Application Development\\SmartLibrarySystem\\SmartLibrarySystem\\SmartLibraryApi\\SmartLibraryApi.csproj",
         "packagesPath": "C:\\Users\\ashan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ashan\\OneDrive\\Desktop\\Enterprise Application Development\\SmartLibrarySystem\\SmartLibraryApi\\obj\\",
+        "outputPath": "c:\\Users\\ashan\\OneDrive\\Desktop\\Enterprise Application Development\\SmartLibrarySystem\\SmartLibrarySystem\\SmartLibraryApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ashan\\AppData\\Roaming\\NuGet\\NuGet.Config"
