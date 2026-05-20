@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Smart Library Management System</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #f5f8ff;
+            color: #111;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #1e90ff;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #1e90ff;
+        }
+
+        .auth-section {
+            min-height: 85vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 50, 120, 0.82)),
+                        url("https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1500&q=80");
+            background-size: cover;
+            background-position: center;
+            padding: 70px 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 450px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+            border-top: 6px solid #1e90ff;
+        }
+
+        .auth-container h1 {
+            text-align: center;
+            color: #000;
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .auth-container h1 span {
+            color: #1e90ff;
+        }
+
+        .auth-container p {
+            text-align: center;
+            color: #555;
+            font-size: 15px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #000;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #cddbf5;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            background-color: #f5f8ff;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #1e90ff;
+            box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.15);
+            background-color: #fff;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .form-options label {
+            color: #333;
+        }
+
+        .form-options a {
+            color: #1e90ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .form-options a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-primary {
+            width: 100%;
+            border: none;
+            background-color: #1e90ff;
+            color: white;
+            padding: 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #006edc;
+        }
+
+        .auth-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 15px;
+            color: #555;
+        }
+
+        .auth-link a {
+            color: #1e90ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .auth-link a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #020202;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 15px;
+        }
+
+        @media screen and (max-width: 900px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+
+            nav a {
+                margin: 8px;
+                display: inline-block;
+            }
+
+            .auth-section {
+                padding: 50px 25px;
+            }
+
+            .auth-container {
+                padding: 30px 25px;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .form-options {
+                flex-direction: column;
+                gap: 12px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Smart<span>Library</span></div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="catalog.html">Book Catalog</a>
+            <a href="registration.html">Registration</a>
+            <a href="borrow-return.html">Borrow/Return</a>
+            
+            <a href="login.html" class="active">Login</a>
+        </nav>
+    </header>
+
+    <section class="auth-section">
+        <div class="auth-container">
+            <h1>Library <span>Login</span></h1>
+            <p>
+                Sign in to access the Smart Library Management System and manage
+                library records, books, and borrowing activities.
+            </p>
+
+            <form>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <div class="form-options">
+                    <label>
+                        <input type="checkbox" name="remember">
+                        Remember me
+                    </label>
+
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+
+            <div class="auth-link">
+                <p>Do not have an account? <a href="registration.html">Register here</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Smart Library Management System. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
